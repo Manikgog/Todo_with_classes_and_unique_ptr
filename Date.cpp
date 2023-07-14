@@ -1,44 +1,49 @@
-#include "Date.h"
+﻿#include "Date.h"
 
+/*!
+\brief метод преобразующий номер месяца в название в виде С++ строки
+\param[in] month номер месяца
+\param[out] C++ cтрока названия месяца
+*/
 std::string Date::NumberToString(int month)
 {
 	std::string month_str;
 	switch (month) {
 	case 1:
-		month_str = "������";
+		month_str = "января";
 		break;
 	case 2:
-		month_str = "�������";
+		month_str = "февраля";
 		break;
 	case 3:
-		month_str = "�����";
+		month_str = "марта";
 		break;
 	case 4:
-		month_str = "������";
+		month_str = "апреля";
 		break;
 	case 5:
-		month_str = "���";
+		month_str = "мая";
 		break;
 	case 6:
-		month_str = "����";
+		month_str = "июня";
 		break;
 	case 7:
-		month_str = "����";
+		month_str = "июля";
 		break;
 	case 8:
-		month_str = "�������";
+		month_str = "августа";
 		break;
 	case 9:
-		month_str = "��������";
+		month_str = "сентября";
 		break;
 	case 10:
-		month_str = "�������";
+		month_str = "октября";
 		break;
 	case 11:
-		month_str = "������";
+		month_str = "ноября";
 		break;
 	case 12:
-		month_str = "�������";
+		month_str = "декабря";
 		break;
 	}
 	return month_str;
@@ -50,6 +55,9 @@ Date::Date(int day, int month, int year)
 	: _day(day), _month(month), _year(year)
 {}
 
+/*!
+\brief конструктор, преобразующий С++ строку в дату _day, _month, _year
+*/
 Date::Date(std::string date)
 {
 	int arr[3]{};
@@ -78,38 +86,58 @@ Date::Date(std::string date)
 }
 
 
+/*!
+\brief метод возвращающий дня
+\param[out] _day число дня
+*/
 int Date::GetDay()
 {
 	return _day;
 }
 
+/*!
+\brief метод возвращающий число месяца
+\param[out] _month число месяца
+*/
 int Date::GetMonth()
 {
 	return _month;
 }
 
+/*!
+\brief метод возвращающий число года
+\param[out] _year число года
+*/
 int Date::GetYear()
 {
 	return _year;
 }
 
+/*!
+\brief перегрузка оператора '<' 
+\param[out] bool
+*/
 bool Date::operator<(const Date& date)
 {
 	if (_year < date._year) {
-		//std::cout << "\x1b[31m����������� ��� ��� ������.\x1b[0m" << std::endl;
+		//std::cout << "\x1b[31mПланируемый год уже прошёл.\x1b[0m" << std::endl;
 		return true;
 	}
 	else if (_month < date._month && _year == date._year) {
-		//std::cout << "\x1b[31m����������� ����� ��� ������.\x1b[0m" << std::endl;
+		//std::cout << "\x1b[31mПланируемый месяц уже прошёл.\x1b[0m" << std::endl;
 		return true;
 	}
 	else if (_day < date._day && _month == date._month) {
-		//std::cout << "\x1b[31m����������� ���� ��� ������.\x1b[0m" << std::endl;
+		//std::cout << "\x1b[31mПланируемый день уже прошёл.\x1b[0m" << std::endl;
 		return true;
 	}
 	return false;
 }
 
+/*!
+\brief перегрузка оператора '==' 
+\param[out] bool
+*/
 bool Date::operator==(const Date& date)
 {
 	if (_year == date._year && _month == date._month && _day == date._day)
@@ -119,6 +147,10 @@ bool Date::operator==(const Date& date)
 	return false;
 }
 
+/*!
+\brief перегрузка оператора '>' 
+\param[out] bool 
+*/
 bool Date::operator>(const Date& date)
 {
 	if ((*this < date) || (*this == date))
@@ -126,15 +158,18 @@ bool Date::operator>(const Date& date)
 	return true;
 }
 
+/*!
+\brief метод для вывода на экран даты
+*/
 void Date::PrintDate()
 {
 	std::cout << GetDay();
 	if (GetDay() < 10)
 		std::cout << ' ';
 	std::cout << ' ' << NumberToString(GetMonth());
-	int maxLengthOfMonth = 8; //��������
+	int maxLengthOfMonth = 8; //< maxLengthOfMonth сентябрь - самый длинный месяц по количеству букв 
 	int numberOfSpaces = maxLengthOfMonth - NumberToString(GetMonth()).size();
-	while (numberOfSpaces-- > 0)
+	while (numberOfSpaces-- > 0)				// выравнивание пробелами
 		std::cout << ' ';
 	std::cout << ' ' << GetYear() << ' ';
 

@@ -1,9 +1,11 @@
-#include "InputOutput.h"
+Ôªø#include "InputOutput.h"
 
-
+/*!
+\brief –º–µ—Ç–æ–¥ –¥–ª—è –≤—ã–≤–æ–¥–∞ –Ω–∞ —ç–∫—Ä–∞–Ω —Å–ø–∏—Å–∫–∞ –ø—Ä–æ—Å—Ä–æ—á–µ–Ω–Ω—ã—Ö –¥–µ–ª
+*/
 void InputOutput::PrintOverdueCaseList()
 {
-	if (!_list.Size())	// ÔË ÔÛÒÚÓÏ ÒÔËÒÍÂ ‚˚ıÓ‰ËÏ ËÁ ÙÛÌÍˆËË
+	if (!_list.Size())	// –ø—Ä–∏ –ø—É—Å—Ç–æ–º —Å–ø–∏—Å–∫–µ –≤—ã—Ö–æ–¥–∏–º –∏–∑ —Ñ—É–Ω–∫—Ü–∏–∏
 		return;
 	time_t now = time(0);
 	tm* ltm = localtime(&now);
@@ -16,7 +18,7 @@ void InputOutput::PrintOverdueCaseList()
 		if (_list.GetCase(i)->GetDate() < Date(currentDay, currentMonth, currentYear))
 		{
 			if (is_first)
-				std::cout << "\x1b[33m—ÔËÒÓÍ ÔÓÒÓ˜ÂÌÌ˚ı Á‡‰‡˜ : \x1b[0m\n";
+				std::cout << "\x1b[33m–°–ø–∏—Å–æ–∫ –ø—Ä–æ—Å—Ä–æ—á–µ–Ω–Ω—ã—Ö –∑–∞–¥–∞—á : \x1b[0m\n";
 			is_first = false;
 			_list.GetCase(i)->PrintCase(_list.GetNumberOfSpaces(i));
 			std::cout << std::endl;
@@ -24,45 +26,41 @@ void InputOutput::PrintOverdueCaseList()
 	}
 }
 
-InputOutput::InputOutput()
-{
-	/*CaseList list;
-	for (size_t i = 0; i < list.Size(); i++)
-	{
-		_list.AddCase(*(list.GetCase(i)));
-	}*/
-}
+InputOutput::InputOutput(){}
 
+/*!
+\brief –º–µ—Ç–æ–¥ –æ–±–µ—Å–ø–µ—á–∏–≤–∞—é—â–∏–π —Ç–µ–∫—Å—Ç–æ–≤—ã–π –∏–Ω—Ç–µ—Ä—Ñ–µ–π—Å —Å –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª–µ–º
+*/
 void InputOutput::MainMenu()
 {
-	bool exit = true;	//< bool exit - variable-flag for exiting the program / ÔÂÂÏÂÌÌ‡§-ÙÎ‡„ ‰Î§ ‚˚ıÓ‰‡ ËÁ ÔÓ„‡ÏÏ˚
+	bool exit = true;	//< bool exit - variable-flag for exiting the program / –ø–µ—Ä–µ–º–µ–Ω–Ω–∞¬§-—Ñ–ª–∞–≥ –¥–ª¬§ –≤—ã—Ö–æ–¥–∞ –∏–∑ –ø—Ä–æ–≥—Ä–∞–º–º—ã
 	int numAction = 0;	//< int numAction - variable for storing an action option from the menu selected by the user
 
-	char answer{ 'Ì' };
+	char answer{ '–Ω' };
 	do {
 
 
 		do {
 			system("cls");
-			std::cout << "\x1b[32mœÓ„‡ÏÏ‡ ‰Î§ ÒÓÁ‰‡ÌËˇ ÒÔËÒÍ‡ Á‡ÔÎ‡ÌËÓ‚‡ÌÌ˚ı ‰ÂÎ.\x1b[0m\n";
+			std::cout << "\x1b[32m–ü—Ä–æ–≥—Ä–∞–º–º–∞ –¥–ª¬§ —Å–æ–∑–¥–∞–Ω–∏—è —Å–ø–∏—Å–∫–∞ –∑–∞–ø–ª–∞–Ω–∏—Ä–æ–≤–∞–Ω–Ω—ã—Ö –¥–µ–ª.\x1b[0m\n";
 			PrintOverdueCaseList();
 
 			Draw_menu(numAction);
 		} while (input_menu(1, 5, numAction) != '\r');
 
-		int nCase = 0;				//< int nCase - variable for storing the number of the selected case / ÔÂÂÏÂÌÌ‡§ ‰Î§ ı‡ÌÂÌË§ ÌÓÏÂ‡ ‚˚·‡ÌÌÓ„Ó ‰ÂÎ‡
-		int nAction = 0;			//< int nAction - variable for storing the action number on the selected case / ÔÂÂÏÂÌÌ‡ˇ ‰Îˇ ı‡ÌÂÌËˇ ÌÓÏÂ‡ ‰ÂÈÒÚ‚Ëˇ Ì‡‰ ‚˚·‡ÌÌ˚Ï ‰ÂÎÓÏ
+		int nCase = 0;				//< int nCase - variable for storing the number of the selected case / –ø–µ—Ä–µ–º–µ–Ω–Ω–∞¬§ –¥–ª¬§ —Ö—Ä–∞–Ω–µ–Ω–∏¬§ –Ω–æ–º–µ—Ä–∞ –≤—ã–±—Ä–∞–Ω–Ω–æ–≥–æ –¥–µ–ª–∞
+		int nAction = 0;			//< int nAction - variable for storing the action number on the selected case / –ø–µ—Ä–µ–º–µ–Ω–Ω–∞—è –¥–ª—è —Ö—Ä–∞–Ω–µ–Ω–∏—è –Ω–æ–º–µ—Ä–∞ –¥–µ–π—Å—Ç–≤–∏—è –Ω–∞–¥ –≤—ã–±—Ä–∞–Ω–Ω—ã–º –¥–µ–ª–æ–º
 		switch (numAction) {
 
 		case 1:
-			AddingCase();//< AddingCase(list) - adding a case to the list / ‰Ó·‡‚ÎÂÌËÂ ‰ÂÎ‡ ‚ ÒÔËÒÓÍ
+			AddingCase();//< AddingCase() - adding a case to the list / –¥–æ–±–∞–≤–ª–µ–Ω–∏–µ –¥–µ–ª–∞ –≤ —Å–ø–∏—Å–æ–∫
 
 			break;
 		case 2:
 			do {
 				do {
 					system("cls");
-					if (1 == ChooseCaseMenu(nCase)) { //< ÂÒÎË ÒÔËÒÓÍ ÔÛÒÚ
+					if (1 == ChooseCaseMenu(nCase)) { //< –µ—Å–ª–∏ —Å–ø–∏—Å–æ–∫ –ø—É—Å—Ç
 						numAction = 1;
 						break;
 					}
@@ -70,16 +68,16 @@ void InputOutput::MainMenu()
 
 				system("cls");
 
-				//< exit to the main menu when selecting "Õ‡Á‡‰"
-				//< ‚˚ıÓ‰ ‚ „Î‡‚ÌÓÂ ÏÂÌ˛ ÔË ‚˚·ÓÂ ÔÛÌÍÚ‡ "Õ‡Á‡‰"
+				//< exit to the main menu when selecting "–ù–∞–∑–∞–¥"
+				//< –≤—ã—Ö–æ–¥ –≤ –≥–ª–∞–≤–Ω–æ–µ –º–µ–Ω—é –ø—Ä–∏ –≤—ã–±–æ—Ä–µ –ø—É–Ω–∫—Ç–∞ "–ù–∞–∑–∞–¥"
 				if (nCase < 0 || nCase >= _list.Size()) {
 					numAction = 1;
 					break;
 				}
 				//< choosing an action with a selected case
-				//< ‚˚·Ó ‰ÂÈÒÚ‚Ë§ Ò ‚˚·‡ÌÌ˚Ï ‰ÂÎÓÏ
+				//< –≤—ã–±–æ—Ä –¥–µ–π—Å—Ç–≤–∏¬§ —Å –≤—ã–±—Ä–∞–Ω–Ω—ã–º –¥–µ–ª–æ–º
 
-				ChangeCaseMenu(nAction, nCase);
+				ChangeCase(nCase, ChangeCaseMenu(nCase));
 				system("pause");
 			} while (nAction == 1);
 
@@ -87,24 +85,24 @@ void InputOutput::MainMenu()
 			break;
 		case 3:
 			//< clearing the entire list
-			//< Ó˜ËÒÚÍ‡ ‚ÒÂ„Ó ÒÔËÒÍ‡
+			//< –æ—á–∏—Å—Ç–∫–∞ –≤—Å–µ–≥–æ —Å–ø–∏—Å–∫–∞
 			system("cls");
 
-			std::cout << "¬˚ Û‚ÂÂÌ˚, ˜ÚÓ ıÓÚËÚÂ Û‰‡ÎËÚ¸ ‚ÒÂ Á‡‰‡˜Ë (‰/Ì)? ";
+			std::cout << "–í—ã —É–≤–µ—Ä–µ–Ω—ã, —á—Ç–æ —Ö–æ—Ç–∏—Ç–µ —É–¥–∞–ª–∏—Ç—å –≤—Å–µ –∑–∞–¥–∞—á–∏ (–¥/–Ω)? ";
 			std::cin >> answer;
-			if (answer == '‰' || answer == 'y')
+			if (answer == '–¥' || answer == 'y')
 			{
 				_list.Clear();
 				if (!_list.Size())
-					std::cout << "—ÔËÒÓÍ ‰ÂÎ Ó˜Ë˘ÂÌ!\n";
+					std::cout << "–°–ø–∏—Å–æ–∫ –¥–µ–ª –æ—á–∏—â–µ–Ω!\n";
 			}
 			system("pause");
 			system("cls");
 			break;
 		case 4:
 			system("cls");
-			//< return to the main menu with an empty to-do list
-			//< ‚ÓÁ‚‡Ú ‚ „Î‡‚ÌÓÂ ÏÂÌ˛ ÔË ÔÛÒÚÓÏ ÒÔËÒÍÂ ‰ÂÎ
+			//< return to the main menu with an empty todo list
+			//< –≤–æ–∑–≤—Ä–∞—Ç –≤ –≥–ª–∞–≤–Ω–æ–µ –º–µ–Ω—é –ø—Ä–∏ –ø—É—Å—Ç–æ–º —Å–ø–∏—Å–∫–µ –¥–µ–ª
 			if (!_list.Size()) {
 				numAction = 1;
 				break;
@@ -121,66 +119,77 @@ void InputOutput::MainMenu()
 	} while (exit);
 }
 
-// ÏÂÚÓ‰ ‰Îˇ ‚˚‚Ó‰‡ Ì‡ ˝Í‡Ì ÓÒÌÓ‚ÌÓ„Ó ÏÂÌ˛
+/*!
+\brief –º–µ—Ç–æ–¥ –¥–ª—è –≤—ã–≤–æ–¥–∞ –Ω–∞ —ç–∫—Ä–∞–Ω —Å–ø–∏—Å–∫–∞ –ø—Ä–æ—Å—Ä–æ—á–µ–Ω–Ω—ã—Ö –¥–µ–ª
+param[in] numAction —Ü–µ–ª–æ—á–∏—Å–ª–µ–Ω–Ω–∞—è –ø–µ—Ä–µ–º–µ–Ω–Ω–∞—è –¥–ª—è –ø–æ–¥—Å—Ç–≤–µ—Ç–∫–∏ –Ω–æ–º–µ—Ä–∞ –¥–µ–π—Å—Ç–≤–∏—è –≤ –º–µ–Ω—é
+*/
 void InputOutput::Draw_menu(const int numAction) {
 	switch (numAction) {
 
 	case 1:
-		std::cout << "\n\x1b[33m¬‡Ë‡ÌÚ˚ ‰ÂÈÒÚ‚ËÈ:\x1b[0m\n\x1b[36mƒÓ·‡‚ÎÂÌËÂ ÌÓ‚Ó„Ó ‰ÂÎ‡.\x1b[0m\n\
-¬˚·Ó ‰ÂÎ‡.\n\
-Œ˜ËÒÚÍ‡ ‚ÒÂ„Ó ÒÔËÒÍ‡ ‰ÂÎ.\n\
-—ÓÚËÓ‚Í‡ ÒÔËÒÍ‡.\n\
-¬˚ıÓ‰ ËÁ ÔÓ„‡ÏÏ˚.\n\
+		std::cout << "\n\x1b[33m–í–∞—Ä–∏–∞–Ω—Ç—ã –¥–µ–π—Å—Ç–≤–∏–π:\x1b[0m\n\x1b[36m–î–æ–±–∞–≤–ª–µ–Ω–∏–µ –Ω–æ–≤–æ–≥–æ –¥–µ–ª–∞.\x1b[0m\n\
+–í—ã–±–æ—Ä –¥–µ–ª–∞.\n\
+–û—á–∏—Å—Ç–∫–∞ –≤—Å–µ–≥–æ —Å–ø–∏—Å–∫–∞ –¥–µ–ª.\n\
+–°–æ—Ä—Ç–∏—Ä–æ–≤–∫–∞ —Å–ø–∏—Å–∫–∞.\n\
+–í—ã—Ö–æ–¥ –∏–∑ –ø—Ä–æ–≥—Ä–∞–º–º—ã.\n\
 \n\
-ƒÎˇ ‚˚·Ó‡ ÔÛÌÍÚ‡ ÏÂÌ˛ ÔÓÎ¸ÁÛÈÚÂÒ¸ ÒÚÂÎÍ‡ÏË ‚‚Âı Ë ‚ÌËÁ Ì‡ ÍÎ‡‚Ë‡ÚÛÂ Ë ÍÌÓÔÍÓÈ ¬¬Œƒ.\n";
+–î–ª—è –≤—ã–±–æ—Ä–∞ –ø—É–Ω–∫—Ç–∞ –º–µ–Ω—é –ø–æ–ª—å–∑—É–π—Ç–µ—Å—å —Å—Ç—Ä–µ–ª–∫–∞–º–∏ –≤–≤–µ—Ä—Ö –∏ –≤–Ω–∏–∑ –Ω–∞ –∫–ª–∞–≤–∏–∞—Ç—É—Ä–µ –∏ –∫–Ω–æ–ø–∫–æ–π –í–í–û–î.\n";
 		break;
 	case 2:
-		std::cout << "\n\x1b[33m¬‡Ë‡ÌÚ˚ ‰ÂÈÒÚ‚ËÈ:\x1b[0m\nƒÓ·‡‚ÎÂÌËÂ ÌÓ‚Ó„Ó ‰ÂÎ‡.\n\
-\x1b[36m¬˚·Ó ‰ÂÎ‡.\x1b[0m\n\
-Œ˜ËÒÚÍ‡ ‚ÒÂ„Ó ÒÔËÒÍ‡ ‰ÂÎ.\n\
-—ÓÚËÓ‚Í‡ ÒÔËÒÍ‡.\n\
-¬˚ıÓ‰ ËÁ ÔÓ„‡ÏÏ˚.\n\
+		std::cout << "\n\x1b[33m–í–∞—Ä–∏–∞–Ω—Ç—ã –¥–µ–π—Å—Ç–≤–∏–π:\x1b[0m\n–î–æ–±–∞–≤–ª–µ–Ω–∏–µ –Ω–æ–≤–æ–≥–æ –¥–µ–ª–∞.\n\
+\x1b[36m–í—ã–±–æ—Ä –¥–µ–ª–∞.\x1b[0m\n\
+–û—á–∏—Å—Ç–∫–∞ –≤—Å–µ–≥–æ —Å–ø–∏—Å–∫–∞ –¥–µ–ª.\n\
+–°–æ—Ä—Ç–∏—Ä–æ–≤–∫–∞ —Å–ø–∏—Å–∫–∞.\n\
+–í—ã—Ö–æ–¥ –∏–∑ –ø—Ä–æ–≥—Ä–∞–º–º—ã.\n\
 \n\
-ƒÎˇ ‚˚·Ó‡ ÔÛÌÍÚ‡ ÏÂÌ˛ ÔÓÎ¸ÁÛÈÚÂÒ¸ ÒÚÂÎÍ‡ÏË ‚‚Âı Ë ‚ÌËÁ Ì‡ ÍÎ‡‚Ë‡ÚÛÂ Ë ÍÌÓÔÍÓÈ ¬¬Œƒ.\n";
+–î–ª—è –≤—ã–±–æ—Ä–∞ –ø—É–Ω–∫—Ç–∞ –º–µ–Ω—é –ø–æ–ª—å–∑—É–π—Ç–µ—Å—å —Å—Ç—Ä–µ–ª–∫–∞–º–∏ –≤–≤–µ—Ä—Ö –∏ –≤–Ω–∏–∑ –Ω–∞ –∫–ª–∞–≤–∏–∞—Ç—É—Ä–µ –∏ –∫–Ω–æ–ø–∫–æ–π –í–í–û–î.\n";
 		break;
 	case 3:
-		std::cout << "\n\x1b[33m¬‡Ë‡ÌÚ˚ ‰ÂÈÒÚ‚ËÈ:\x1b[0m\nƒÓ·‡‚ÎÂÌËÂ ÌÓ‚Ó„Ó ‰ÂÎ‡.\n\
-¬˚·Ó ‰ÂÎ‡.\n\
-\x1b[36mŒ˜ËÒÚÍ‡ ‚ÒÂ„Ó ÒÔËÒÍ‡ ‰ÂÎ.\x1b[0m\n\
-—ÓÚËÓ‚Í‡ ÒÔËÒÍ‡.\n\
-¬˚ıÓ‰ ËÁ ÔÓ„‡ÏÏ˚.\n\
+		std::cout << "\n\x1b[33m–í–∞—Ä–∏–∞–Ω—Ç—ã –¥–µ–π—Å—Ç–≤–∏–π:\x1b[0m\n–î–æ–±–∞–≤–ª–µ–Ω–∏–µ –Ω–æ–≤–æ–≥–æ –¥–µ–ª–∞.\n\
+–í—ã–±–æ—Ä –¥–µ–ª–∞.\n\
+\x1b[36m–û—á–∏—Å—Ç–∫–∞ –≤—Å–µ–≥–æ —Å–ø–∏—Å–∫–∞ –¥–µ–ª.\x1b[0m\n\
+–°–æ—Ä—Ç–∏—Ä–æ–≤–∫–∞ —Å–ø–∏—Å–∫–∞.\n\
+–í—ã—Ö–æ–¥ –∏–∑ –ø—Ä–æ–≥—Ä–∞–º–º—ã.\n\
 \n\
-ƒÎˇ ‚˚·Ó‡ ÔÛÌÍÚ‡ ÏÂÌ˛ ÔÓÎ¸ÁÛÈÚÂÒ¸ ÒÚÂÎÍ‡ÏË ‚‚Âı Ë ‚ÌËÁ Ì‡ ÍÎ‡‚Ë‡ÚÛÂ Ë ÍÌÓÔÍÓÈ ¬¬Œƒ.\n";
+–î–ª—è –≤—ã–±–æ—Ä–∞ –ø—É–Ω–∫—Ç–∞ –º–µ–Ω—é –ø–æ–ª—å–∑—É–π—Ç–µ—Å—å —Å—Ç—Ä–µ–ª–∫–∞–º–∏ –≤–≤–µ—Ä—Ö –∏ –≤–Ω–∏–∑ –Ω–∞ –∫–ª–∞–≤–∏–∞—Ç—É—Ä–µ –∏ –∫–Ω–æ–ø–∫–æ–π –í–í–û–î.\n";
 		break;
 	case 4:
-		std::cout << "\n\x1b[33m¬‡Ë‡ÌÚ˚ ‰ÂÈÒÚ‚ËÈ:\x1b[0m\nƒÓ·‡‚ÎÂÌËÂ ÌÓ‚Ó„Ó ‰ÂÎ‡.\n\
-¬˚·Ó ‰ÂÎ‡.\n\
-Œ˜ËÒÚÍ‡ ‚ÒÂ„Ó ÒÔËÒÍ‡ ‰ÂÎ.\n\
-\x1b[36m—ÓÚËÓ‚Í‡ ÒÔËÒÍ‡.\x1b[0m\n\
-¬˚ıÓ‰ ËÁ ÔÓ„‡ÏÏ˚.\n\
+		std::cout << "\n\x1b[33m–í–∞—Ä–∏–∞–Ω—Ç—ã –¥–µ–π—Å—Ç–≤–∏–π:\x1b[0m\n–î–æ–±–∞–≤–ª–µ–Ω–∏–µ –Ω–æ–≤–æ–≥–æ –¥–µ–ª–∞.\n\
+–í—ã–±–æ—Ä –¥–µ–ª–∞.\n\
+–û—á–∏—Å—Ç–∫–∞ –≤—Å–µ–≥–æ —Å–ø–∏—Å–∫–∞ –¥–µ–ª.\n\
+\x1b[36m–°–æ—Ä—Ç–∏—Ä–æ–≤–∫–∞ —Å–ø–∏—Å–∫–∞.\x1b[0m\n\
+–í—ã—Ö–æ–¥ –∏–∑ –ø—Ä–æ–≥—Ä–∞–º–º—ã.\n\
 \n\
-ƒÎˇ ‚˚·Ó‡ ÔÛÌÍÚ‡ ÏÂÌ˛ ÔÓÎ¸ÁÛÈÚÂÒ¸ ÒÚÂÎÍ‡ÏË ‚‚Âı Ë ‚ÌËÁ Ì‡ ÍÎ‡‚Ë‡ÚÛÂ Ë ÍÌÓÔÍÓÈ ¬¬Œƒ.\n";
+–î–ª—è –≤—ã–±–æ—Ä–∞ –ø—É–Ω–∫—Ç–∞ –º–µ–Ω—é –ø–æ–ª—å–∑—É–π—Ç–µ—Å—å —Å—Ç—Ä–µ–ª–∫–∞–º–∏ –≤–≤–µ—Ä—Ö –∏ –≤–Ω–∏–∑ –Ω–∞ –∫–ª–∞–≤–∏–∞—Ç—É—Ä–µ –∏ –∫–Ω–æ–ø–∫–æ–π –í–í–û–î.\n";
 		break;
 	case 5:
-		std::cout << "\n\x1b[33m¬‡Ë‡ÌÚ˚ ‰ÂÈÒÚ‚ËÈ:\x1b[0m\nƒÓ·‡‚ÎÂÌËÂ ÌÓ‚Ó„Ó ‰ÂÎ‡.\n\
-¬˚·Ó ‰ÂÎ‡.\n\
-Œ˜ËÒÚÍ‡ ‚ÒÂ„Ó ÒÔËÒÍ‡ ‰ÂÎ.\n\
-—ÓÚËÓ‚Í‡ ÒÔËÒÍ‡.\n\
-\x1b[36m¬˚ıÓ‰ ËÁ ÔÓ„‡ÏÏ˚.\x1b[0m\n\
+		std::cout << "\n\x1b[33m–í–∞—Ä–∏–∞–Ω—Ç—ã –¥–µ–π—Å—Ç–≤–∏–π:\x1b[0m\n–î–æ–±–∞–≤–ª–µ–Ω–∏–µ –Ω–æ–≤–æ–≥–æ –¥–µ–ª–∞.\n\
+–í—ã–±–æ—Ä –¥–µ–ª–∞.\n\
+–û—á–∏—Å—Ç–∫–∞ –≤—Å–µ–≥–æ —Å–ø–∏—Å–∫–∞ –¥–µ–ª.\n\
+–°–æ—Ä—Ç–∏—Ä–æ–≤–∫–∞ —Å–ø–∏—Å–∫–∞.\n\
+\x1b[36m–í—ã—Ö–æ–¥ –∏–∑ –ø—Ä–æ–≥—Ä–∞–º–º—ã.\x1b[0m\n\
 \n\
-ƒÎˇ ‚˚·Ó‡ ÔÛÌÍÚ‡ ÏÂÌ˛ ÔÓÎ¸ÁÛÈÚÂÒ¸ ÒÚÂÎÍ‡ÏË ‚‚Âı Ë ‚ÌËÁ Ì‡ ÍÎ‡‚Ë‡ÚÛÂ Ë ÍÌÓÔÍÓÈ ¬¬Œƒ.\n";
+–î–ª—è –≤—ã–±–æ—Ä–∞ –ø—É–Ω–∫—Ç–∞ –º–µ–Ω—é –ø–æ–ª—å–∑—É–π—Ç–µ—Å—å —Å—Ç—Ä–µ–ª–∫–∞–º–∏ –≤–≤–µ—Ä—Ö –∏ –≤–Ω–∏–∑ –Ω–∞ –∫–ª–∞–≤–∏–∞—Ç—É—Ä–µ –∏ –∫–Ω–æ–ø–∫–æ–π –í–í–û–î.\n";
 		break;
 	default:
-		std::cout << "\n\x1b[33m¬‡Ë‡ÌÚ˚ ‰ÂÈÒÚ‚ËÈ:\x1b[0m\nƒÓ·‡‚ÎÂÌËÂ ÌÓ‚Ó„Ó ‰ÂÎ‡.\n\
-¬˚·Ó ‰ÂÎ‡.\n\
-Œ˜ËÒÚÍ‡ ‚ÒÂ„Ó ÒÔËÒÍ‡ ‰ÂÎ.\n\
-—ÓÚËÓ‚Í‡ ÒÔËÒÍ‡.\n\
-¬˚ıÓ‰ ËÁ ÔÓ„‡ÏÏ˚.\n\
+		std::cout << "\n\x1b[33m–í–∞—Ä–∏–∞–Ω—Ç—ã –¥–µ–π—Å—Ç–≤–∏–π:\x1b[0m\n–î–æ–±–∞–≤–ª–µ–Ω–∏–µ –Ω–æ–≤–æ–≥–æ –¥–µ–ª–∞.\n\
+–í—ã–±–æ—Ä –¥–µ–ª–∞.\n\
+–û—á–∏—Å—Ç–∫–∞ –≤—Å–µ–≥–æ —Å–ø–∏—Å–∫–∞ –¥–µ–ª.\n\
+–°–æ—Ä—Ç–∏—Ä–æ–≤–∫–∞ —Å–ø–∏—Å–∫–∞.\n\
+–í—ã—Ö–æ–¥ –∏–∑ –ø—Ä–æ–≥—Ä–∞–º–º—ã.\n\
 \n\
-ƒÎˇ ‚˚·Ó‡ ÔÛÌÍÚ‡ ÏÂÌ˛ ÔÓÎ¸ÁÛÈÚÂÒ¸ ÒÚÂÎÍ‡ÏË ‚‚Âı Ë ‚ÌËÁ Ì‡ ÍÎ‡‚Ë‡ÚÛÂ Ë ÍÌÓÔÍÓÈ ¬¬Œƒ.\n";
+–î–ª—è –≤—ã–±–æ—Ä–∞ –ø—É–Ω–∫—Ç–∞ –º–µ–Ω—é –ø–æ–ª—å–∑—É–π—Ç–µ—Å—å —Å—Ç—Ä–µ–ª–∫–∞–º–∏ –≤–≤–µ—Ä—Ö –∏ –≤–Ω–∏–∑ –Ω–∞ –∫–ª–∞–≤–∏–∞—Ç—É—Ä–µ –∏ –∫–Ω–æ–ø–∫–æ–π –í–í–û–î.\n";
 	}
 }
 
+
+/*!
+\brief –º–µ—Ç–æ–¥ –¥–ª—è –ø—Ä–µ–æ–±—Ä–∞–∑–æ–≤–∞–Ω–∏—è –Ω–∞–∂–∞—Ç–∏—è –Ω–∞ –∫–Ω–æ–ø–∫–∏ –≤–≤–µ—Ä—Ö –∏ –≤–Ω–∏–∑ –≤ —Ü–µ–ª–æ—á–∏—Å–ª–µ–Ω–Ω–æ–µ –∑–Ω–∞—á–µ–Ω–∏–µ —Ç–∏–ø–∞ char –¥–ª—è –ø–æ—Å–ª–µ–¥—É—é—â–µ–π –æ–±—Ä–∞–±–æ—Ç–∫–∏
+param[in] low –Ω–∏–∂–Ω—è—è –≥—Ä–∞–Ω–∏—Ü–∞ –Ω–æ–º–µ—Ä–∞ –º–µ–Ω—é
+param[in] hi –≤–µ—Ä—Ö–Ω—è—è –≥—Ä–∞–Ω–∏—Ü–∞ –Ω–æ–º–µ—Ä–∞ –º–µ–Ω—é
+param[in] numAction —Ç–µ–∫—É—â–∏–π –Ω–æ–º–µ—Ä –¥–µ–π—Å—Ç–≤–∏—è –≤ –º–µ–Ω—é
+param[out] –≤–æ–∑–≤—Ä–∞—â–∞–µ—Ç —Ä–µ–∑—É–ª—å—Ç–∞—Ç –≤ –≤–∏–¥–µ –∑–Ω–∞—á–µ–Ω–∏—è —Ç–∏–ø–∞ char
+*/
 char InputOutput::input_menu(int low, int hi, int& numAcion) {
 	int c1 = 0;
 	int c2 = 0;
@@ -213,31 +222,39 @@ char InputOutput::input_menu(int low, int hi, int& numAcion) {
 	return (char)c1;
 }
 
+/*!
+\brief –º–µ—Ç–æ–¥ –¥–ª—è –æ–±–µ—Å–ø–µ—á–µ–Ω–∏—è –¥–æ–±–∞–≤–ª–µ–Ω–∏—è –Ω–æ–≤–æ–≥–æ –¥–µ–ª–∞ –≤ —Å–ø–∏—Å–æ–∫
+*/
 void InputOutput::AddingCase()
 {
 	std::string date;							//< string object for entering the date
 
-	std::cout << "\x1b[33m¬‚Â‰ËÚÂ Ì‡Á‚‡ÌËÂ ÌÓ‚Ó„Ó ÏÂÓÔËˇÚËˇ -> \x1b[0m";
+	std::cout << "\x1b[33m–í–≤–µ–¥–∏—Ç–µ –Ω–∞–∑–≤–∞–Ω–∏–µ –Ω–æ–≤–æ–≥–æ –º–µ—Ä–æ–ø—Ä–∏—è—Ç–∏—è -> \x1b[0m";
 	std::string title;							//< string object for recording name of the case
 	std::getline(std::cin, title);
 	std::vector<int> vec_date;
 	do {
-		std::cout << "\x1b[33m¬‚Â‰ËÚÂ ‰‡ÚÛ ‚ ÙÓÏ‡ÚÂ ƒƒ.ÃÃ.√√√√ -> \x1b[0m";
+		std::cout << "\x1b[33m–í–≤–µ–¥–∏—Ç–µ –¥–∞—Ç—É –≤ —Ñ–æ—Ä–º–∞—Ç–µ –î–î.–ú–ú.–ì–ì–ì–ì -> \x1b[0m";
 		std::getline(std::cin, date);
 		
 	} while (CheckDate(date) == false);
 	Case newCase(title, date, false);
 	_list.AddCase(newCase);
-	std::cout << "\x1b[32mÕÓ‚ÓÂ ‰ÂÎÓ ‰Ó·‡‚ÎÂÌÓ ‚ ÒÔËÒÓÍ.\x1b[0m\n";
+	std::cout << "\x1b[32m–ù–æ–≤–æ–µ –¥–µ–ª–æ –¥–æ–±–∞–≤–ª–µ–Ω–æ –≤ —Å–ø–∏—Å–æ–∫.\x1b[0m\n";
 
 	system("pause");
 	system("cls");
 
 }
 
+/*!
+\brief –º–µ—Ç–æ–¥ –¥–ª—è –ø—Ä–æ–≤–µ—Ä–∫–∏ –≤–≤–µ–¥–µ–Ω–Ω–æ–π –¥–∞—Ç—ã
+param[in] date –¥–∞—Ç–∞ –≤ –≤–∏–¥–µ –°++-—Å—Ç—Ä–æ–∫–∏
+param[out] –≤–æ–∑–≤—Ä–∞—â–∞–µ—Ç —Ä–µ–∑—É–ª—å—Ç–∞—Ç –≤ –≤–∏–¥–µ –±—É–ª–µ–≤–æ–≥–æ –∑–Ω–∞—á–µ–Ω–∏—è 
+*/
 bool InputOutput::CheckDate(std::string date)
 {
-	int arr[3]{};						//< ˆËÙ‡ 3 - ÍÓÎË˜ÂÒÚ‚Ó ˜ËÒÂÎ ‚ ‰‡ÚÂ
+	int arr[3]{};						//< —Ü–∏—Ñ—Ä–∞ 3 - –∫–æ–ª–∏—á–µ—Å—Ç–≤–æ —á–∏—Å–µ–ª –≤ –¥–∞—Ç–µ
 	std::string s_tmp;
 	char c;
 
@@ -248,7 +265,7 @@ bool InputOutput::CheckDate(std::string date)
 			arr[j] = stoi(s_tmp);
 			s_tmp.erase();
 			j++;
-			if (j == 3) break;	//< ˜ËÒÎÓ 3 - ÍÓÎË˜ÂÒÚ‚Ó ˜ËÒÂÎ ‚ ‰‡ÚÂ Ú.Â. ‰ÂÌ¸, ÏÂÒˇˆ, „Ó‰ - ÚË ˜ËÒÎ‡
+			if (j == 3) break;	//< —á–∏—Å–ª–æ 3 - –∫–æ–ª–∏—á–µ—Å—Ç–≤–æ —á–∏—Å–µ–ª –≤ –¥–∞—Ç–µ —Ç.–µ. –¥–µ–Ω—å, –º–µ—Å—è—Ü, –≥–æ–¥ - —Ç—Ä–∏ —á–∏—Å–ª–∞
 		}
 
 		if (date[i] >= '0' && date[i] <= '9')
@@ -265,6 +282,16 @@ bool InputOutput::CheckDate(std::string date)
 
 }
 
+/*!
+\brief –º–µ—Ç–æ–¥ –¥–ª—è –ø—Ä–æ–≤–µ—Ä–∫–∏ –≤–≤–µ–¥–µ–Ω–Ω–æ–π –¥–∞—Ç—ã
+–ü–µ—Ä–µ–¥–∞–Ω–Ω–∞—è –≤–µ–ª–∏—á–∏–Ω–∞ –Ω–æ–º–µ—Ä–∞ –¥–Ω—è –¥–æ–ª–∂–Ω–∞ –ª–µ–∂–∞—Ç—å –≤ –ø—Ä–µ–¥–µ–ª–∞—Ö —Ä–∞–∑–º–µ—Ä–æ–≤
+–ø–µ—Ä–µ–¥–∞–Ω–Ω–æ–≥–æ –º–µ—Å—è—Ü–∞. –ù–æ–º–µ—Ä –º–µ—Å—è—Ü–∞ –ø—Ä–æ–≤–µ—Ä—è–µ—Ç—Å—è –Ω–∞ —Å–æ–æ—Ç–≤–µ—Ç—Å—Ç–≤–∏ –∫–æ–ª–∏—á–µ—Å—Ç–≤—É –º–µ—Å—è—Ü–µ–≤ 
+–≤ –≥–æ–¥—É.
+param[in] day –Ω–æ–º–µ—Ä –¥–Ω—è
+param[in] month –Ω–æ–º–µ—Ä –º–µ—Å—è—Ü–∞
+param[in] year –≥–æ–¥
+param[out] –≤–æ–∑–≤—Ä–∞—â–∞–µ—Ç —Ä–µ–∑—É–ª—å—Ç–∞—Ç –≤ –≤–∏–¥–µ –±—É–ª–µ–≤–æ–≥–æ –∑–Ω–∞—á–µ–Ω–∏—è
+*/
 bool InputOutput::IsValidDate(int day, int month, int year)
 {
 	// current date/time based on current system
@@ -278,11 +305,11 @@ bool InputOutput::IsValidDate(int day, int month, int year)
 	unsigned short currentYear = 1900 + ltm->tm_year;
 	unsigned short currentMonth = 1 + ltm->tm_mon;
 	unsigned short currentDay = ltm->tm_mday;
-	unsigned short lengthOfFeb = 28; // Ì‡˜‡Î¸Ì‡ˇ ‰ÎËÌ‡ ÙÂ‚‡Îˇ / initial length of february
+	unsigned short lengthOfFeb = 28; // –Ω–∞—á–∞–ª—å–Ω–∞—è –¥–ª–∏–Ω–∞ —Ñ–µ–≤—Ä–∞–ª—è / initial length of february
 	switch (month) {
 	case 1:
 		if (day < 1 || day > 31) {
-			std::cout << "\x1b[31mÕÂÔ‡‚ËÎ¸ÌÓ ‚‚Â‰∏Ì ‰ÂÌ¸ ÏÂÒˇˆ‡.\x1b[0m" << std::endl;
+			std::cout << "\x1b[31m–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω–æ –≤–≤–µ–¥—ë–Ω –¥–µ–Ω—å –º–µ—Å—è—Ü–∞.\x1b[0m" << std::endl;
 			return false;
 		}
 		break;
@@ -290,74 +317,74 @@ bool InputOutput::IsValidDate(int day, int month, int year)
 		if (isLeapYear(year))
 			lengthOfFeb = 29;
 		if (day < 1 || day > lengthOfFeb) {
-			std::cout << "\x1b[31mÕÂÔ‡‚ËÎ¸ÌÓ ‚‚Â‰∏Ì ‰ÂÌ¸ ÏÂÒˇˆ‡.\x1b[0m" << std::endl;
+			std::cout << "\x1b[31m–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω–æ –≤–≤–µ–¥—ë–Ω –¥–µ–Ω—å –º–µ—Å—è—Ü–∞.\x1b[0m" << std::endl;
 			return false;
 		}
 		break;
 	case 3:
 		if (day < 1 || day > 31) {
-			std::cout << "\x1b[31mÕÂÔ‡‚ËÎ¸ÌÓ ‚‚Â‰∏Ì ‰ÂÌ¸ ÏÂÒˇˆ‡.\x1b[0m" << std::endl;
+			std::cout << "\x1b[31m–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω–æ –≤–≤–µ–¥—ë–Ω –¥–µ–Ω—å –º–µ—Å—è—Ü–∞.\x1b[0m" << std::endl;
 			return false;
 		}
 		break;
 	case 4:
 		if (day < 1 || day > 30) {
-			std::cout << "\x1b[31mÕÂÔ‡‚ËÎ¸ÌÓ ‚‚Â‰∏Ì ‰ÂÌ¸ ÏÂÒˇˆ‡.\x1b[0m" << std::endl;
+			std::cout << "\x1b[31m–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω–æ –≤–≤–µ–¥—ë–Ω –¥–µ–Ω—å –º–µ—Å—è—Ü–∞.\x1b[0m" << std::endl;
 			return false;
 		}
 		break;
 	case 5:
 		if (day < 1 || day > 31) {
-			std::cout << "\x1b[31mÕÂÔ‡‚ËÎ¸ÌÓ ‚‚Â‰∏Ì ‰ÂÌ¸ ÏÂÒˇˆ‡.\x1b[0m" << std::endl;
+			std::cout << "\x1b[31m–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω–æ –≤–≤–µ–¥—ë–Ω –¥–µ–Ω—å –º–µ—Å—è—Ü–∞.\x1b[0m" << std::endl;
 			return false;
 		}
 		break;
 	case 6:
 		if (day < 1 || day > 30) {
-			std::cout << "\x1b[31mÕÂÔ‡‚ËÎ¸ÌÓ ‚‚Â‰∏Ì ‰ÂÌ¸ ÏÂÒˇˆ‡.\x1b[0m" << std::endl;
+			std::cout << "\x1b[31m–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω–æ –≤–≤–µ–¥—ë–Ω –¥–µ–Ω—å –º–µ—Å—è—Ü–∞.\x1b[0m" << std::endl;
 			return false;
 		}
 		break;
 	case 7:
 		if (day < 1 || day > 31) {
-			std::cout << "\x1b[31mÕÂÔ‡‚ËÎ¸ÌÓ ‚‚Â‰∏Ì ‰ÂÌ¸ ÏÂÒˇˆ‡.\x1b[0m" << std::endl;
+			std::cout << "\x1b[31m–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω–æ –≤–≤–µ–¥—ë–Ω –¥–µ–Ω—å –º–µ—Å—è—Ü–∞.\x1b[0m" << std::endl;
 			return false;
 		}
 		break;
 	case 8:
 		if (day < 1 || day > 31) {
-			std::cout << "\x1b[31mÕÂÔ‡‚ËÎ¸ÌÓ ‚‚Â‰∏Ì ‰ÂÌ¸ ÏÂÒˇˆ‡.\x1b[0m" << std::endl;
+			std::cout << "\x1b[31m–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω–æ –≤–≤–µ–¥—ë–Ω –¥–µ–Ω—å –º–µ—Å—è—Ü–∞.\x1b[0m" << std::endl;
 			return false;
 		}
 		break;
 	case 9:
 		if (day < 1 || day > 30) {
-			std::cout << "\x1b[31mÕÂÔ‡‚ËÎ¸ÌÓ ‚‚Â‰∏Ì ‰ÂÌ¸ ÏÂÒˇˆ‡.\x1b[0m" << std::endl;
+			std::cout << "\x1b[31m–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω–æ –≤–≤–µ–¥—ë–Ω –¥–µ–Ω—å –º–µ—Å—è—Ü–∞.\x1b[0m" << std::endl;
 			return false;
 		}
 		break;
 	case 10:
 		if (day < 1 || day > 31) {
-			std::cout << "\x1b[31mÕÂÔ‡‚ËÎ¸ÌÓ ‚‚Â‰∏Ì ‰ÂÌ¸ ÏÂÒˇˆ‡.\x1b[0m" << std::endl;
+			std::cout << "\x1b[31m–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω–æ –≤–≤–µ–¥—ë–Ω –¥–µ–Ω—å –º–µ—Å—è—Ü–∞.\x1b[0m" << std::endl;
 			return false;
 		}
 		break;
 	case 11:
 		if (day < 1 || day > 30) {
-			std::cout << "\x1b[31mÕÂÔ‡‚ËÎ¸ÌÓ ‚‚Â‰∏Ì ‰ÂÌ¸ ÏÂÒˇˆ‡.\x1b[0m" << std::endl;
+			std::cout << "\x1b[31m–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω–æ –≤–≤–µ–¥—ë–Ω –¥–µ–Ω—å –º–µ—Å—è—Ü–∞.\x1b[0m" << std::endl;
 			return false;
 		}
 		break;
 	case 12:
 		if (day < 1 || day > 31) {
-			std::cout << "\x1b[31mÕÂÔ‡‚ËÎ¸ÌÓ ‚‚Â‰∏Ì ‰ÂÌ¸ ÏÂÒˇˆ‡.\x1b[0m" << std::endl;
+			std::cout << "\x1b[31m–ù–µ–ø—Ä–∞–≤–∏–ª—å–Ω–æ –≤–≤–µ–¥—ë–Ω –¥–µ–Ω—å –º–µ—Å—è—Ü–∞.\x1b[0m" << std::endl;
 			return false;
 		}
 		break;
 	}
 
 	if (month > 12) {
-		std::cout << "\x1b[31mÃÂÒˇˆÂ‚ ‰ÓÎÊÌÓ ·˚Ú¸ ÏÂÌ¸¯Â 13.\x1b[0m" << std::endl;
+		std::cout << "\x1b[31m–ú–µ—Å—è—Ü–µ–≤ –¥–æ–ª–∂–Ω–æ –±—ã—Ç—å –º–µ–Ω—å—à–µ 13.\x1b[0m" << std::endl;
 		return false;
 	}
 
@@ -367,55 +394,75 @@ bool InputOutput::IsValidDate(int day, int month, int year)
 	return true;
 }
 
-
+/*!
+\brief –º–µ—Ç–æ–¥ –¥–ª—è –ø—Ä–æ–≤–µ—Ä–∫–∏ –≤–∏—Å–æ–∫–æ—Å–Ω–æ—Å—Ç–∏ –≥–æ–¥–∞
+param[in] year –Ω–æ–º–µ—Ä –≥–æ–¥–∞
+param[out] true - –≤–∏—Å–æ–∫–æ—Å–Ω—ã–π, false - –Ω–µ–≤–∏—Å–æ–∫–æ—Å–Ω—ã–π 
+*/
 bool InputOutput::isLeapYear(int year) {
 	if (year % 4 == 0) {
 		if ((year % 100) == 0 && (year % 400) == 0) {
-			//std::cout << "√Ó‰ " << year << " ‚ËÒÓÍÓÒÌ˚È.\n";
+			//std::cout << "–ì–æ–¥ " << year << " –≤–∏—Å–æ–∫–æ—Å–Ω—ã–π.\n";
 			return true;
 		}
 		else if ((year % 100) != 0) {
-			// std::cout << "√Ó‰ " << year << " ‚ËÒÓÍÓÒÌ˚È.\n";
+			// std::cout << "–ì–æ–¥ " << year << " –≤–∏—Å–æ–∫–æ—Å–Ω—ã–π.\n";
 			return true;
 		}
 		else {
-			//std::cout << "√Ó‰ " << year << " ÌÂ ˇ‚ÎˇÂÚÒˇ ‚ËÒÓÍÓÒÌ˚Ï.\n";
+			//std::cout << "–ì–æ–¥ " << year << " –Ω–µ —è–≤–ª—è–µ—Ç—Å—è –≤–∏—Å–æ–∫–æ—Å–Ω—ã–º.\n";
 			return false;
 		}
 	}
 
-	//std::cout << "√Ó‰ " << year << " ÌÂ ˇ‚ÎˇÂÚÒˇ ‚ËÒÓÍÓÒÌ˚Ï.\n";
+	//std::cout << "–ì–æ–¥ " << year << " –Ω–µ —è–≤–ª—è–µ—Ç—Å—è –≤–∏—Å–æ–∫–æ—Å–Ω—ã–º.\n";
 	return false;
 }
 
+/*!
+\brief –º–µ—Ç–æ–¥ –¥–ª—è –ø—Ä–æ–≤–µ—Ä–∫–∏ –ø—Ä–æ—à–ª–∞ –ª–∏ –≤–≤–µ–¥—ë–Ω–Ω–∞—è –¥–∞—Ç–∞ –∏–ª–∏ –Ω–µ—Ç
+param[in] day - –≤–≤–µ–¥—ë–Ω–Ω—ã–π –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª–µ–º –¥–µ–Ω—å
+param[in] month - –≤–≤–µ–¥—ë–Ω–Ω—ã–π –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª–µ–º –º–µ—Å—è—Ü
+param[in] year - –≤–≤–µ–¥—ë–Ω–Ω—ã–π –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª–µ–º –≥–æ–¥
+param[in] currentDay - —Ç–µ–∫—É—â–∏–π –¥–µ–Ω—å
+param[in] currentMonth - —Ç–µ–∫—É—â–∏–π –º–µ—Å—è—Ü
+param[in] currentYear - —Ç–µ–∫—É—â–∏–π –≥–æ–¥
+param[out] true - –¥–∞—Ç–∞ –Ω–µ –ø—Ä–æ—à–ª–∞, false - –¥–∞—Ç–∞ —É–∂–µ –ø—Ä–æ—à–ª–∞
+*/
 bool InputOutput::CheckOverdueCase(int day, int month, int year, unsigned short currentYear, unsigned short currentMonth, unsigned short currentDay) const
 {
 	if (year < currentYear) {
-		std::cout << "\x1b[31mœÎ‡ÌËÛÂÏ˚È „Ó‰ ÛÊÂ ÔÓ¯∏Î.\x1b[0m" << std::endl;
+		std::cout << "\x1b[31m–ü–ª–∞–Ω–∏—Ä—É–µ–º—ã–π –≥–æ–¥ —É–∂–µ –ø—Ä–æ—à—ë–ª.\x1b[0m" << std::endl;
 		return false;
 	}
 	else if (month < currentMonth && year == currentYear) {
-		std::cout << "\x1b[31mœÎ‡ÌËÛÂÏ˚È ÏÂÒˇˆ ÛÊÂ ÔÓ¯∏Î.\x1b[0m" << std::endl;
+		std::cout << "\x1b[31m–ü–ª–∞–Ω–∏—Ä—É–µ–º—ã–π –º–µ—Å—è—Ü —É–∂–µ –ø—Ä–æ—à—ë–ª.\x1b[0m" << std::endl;
 		return false;
 	}
 	else if (day < currentDay && month == currentMonth) {
-		std::cout << "\x1b[31mœÎ‡ÌËÛÂÏ˚È ‰ÂÌ¸ ÛÊÂ ÔÓ¯∏Î.\x1b[0m" << std::endl;
+		std::cout << "\x1b[31m–ü–ª–∞–Ω–∏—Ä—É–µ–º—ã–π –¥–µ–Ω—å —É–∂–µ –ø—Ä–æ—à—ë–ª.\x1b[0m" << std::endl;
 		return false;
 	}
 	return true;
 }
 
+/*!
+\brief –º–µ—Ç–æ–¥ –¥–ª—è –≤—ã–≤–æ–¥–∞ –Ω–∞ —ç–∫—Ä–∞–Ω –º–µ–Ω—é –≤—ã–±–æ—Ä–∞ –¥–µ–ª–∞ –ø–æ–¥—Å–≤–µ—Ç–∫–æ–π –æ–¥–Ω–æ–≥–æ –∏–∑ –ø—É–Ω–∫—Ç–æ–≤
+param[in] nCase –Ω–æ–º–µ—Ä –¥–µ–ª–∞, –∫–æ—Ç–æ—Ä–æ–µ –±—É–¥–µ—Ç –ø–æ–¥—Å–≤–µ—á–µ–Ω–æ
+param[out] –µ—Å–ª–∏ –≤–æ–∑–≤—Ä–∞—â–∞–µ—Ç—Å—è 1, —Ç–æ —ç—Ç–æ —Å–∏–≥–Ω–∞–ª –¥–ª—è –≤—ã–∑–≤–∞–≤—à–µ–π —Ñ—É–Ω–∫—Ü–∏–∏ –≤–µ—Ä–Ω—É—Ç—å—Å—è –≤ –ø—Ä–µ–¥—ã–¥—É—â–µ–µ –º–µ–Ω—é, —Ç.–∫. —Å–ø–∏—Å–æ–∫ –¥–µ–ª –ø—É—Å—Ç
+			–µ—Å–ª–∏ –∂–µ –≤–æ–∑–≤—Ä–∞—â–∞–µ—Ç—Å—è 0, —Ç–æ –ø—Ä–æ–¥–æ–ª–∂–∞–µ—Ç—Å—è –≤—ã–±–æ—Ä –¥–µ–ª–∞
+*/
 int InputOutput::ChooseCaseMenu(int nCase)
 {
 	size_t listSize = _list.Size();
 	if (listSize == 0) {
-		std::cout << "«‡ÔÎ‡ÌËÓ‚‡ÌÌ˚ı ‰ÂÎ ÌÂÚ. —ÔËÒÓÍ ÔÛÒÚ.\n";
+		std::cout << "–ó–∞–ø–ª–∞–Ω–∏—Ä–æ–≤–∞–Ω–Ω—ã—Ö –¥–µ–ª –Ω–µ—Ç. –°–ø–∏—Å–æ–∫ –ø—É—Å—Ç.\n";
 		return 1;
 	}
 	else {
 
 
-		std::cout << "\x1b[33m—ÔËÒÓÍ Á‡ÔÎ‡ÌËÓ‚‡ÌÌ˚ı ‰ÂÎ:\x1b[0m\n";
+		std::cout << "\x1b[33m–°–ø–∏—Å–æ–∫ –∑–∞–ø–ª–∞–Ω–∏—Ä–æ–≤–∞–Ω–Ω—ã—Ö –¥–µ–ª:\x1b[0m\n";
 		if (nCase >= 0 && nCase < listSize) {
 			for (int i = 0; i < listSize; ++i) {
 				if (nCase == i)
@@ -428,17 +475,22 @@ int InputOutput::ChooseCaseMenu(int nCase)
 					_list.GetCase(i)->PrintCase(_list.GetNumberOfSpaces(i));
 					std::cout << std::endl;
 			}
-			std::cout << "Õ‡Á‡‰\n";
+			std::cout << "–ù–∞–∑–∞–¥\n";
 		}
 		else {
 			_list.PrintCaseList();
-			std::cout << "\x1b[36mÕ‡Á‡‰\x1b[0m\n";
+			std::cout << "\x1b[36m–ù–∞–∑–∞–¥\x1b[0m\n";
 		}
 	}
 	return 0;
 }
 
-int InputOutput::ChangeCaseMenu(int nAction, int numCase)
+/*!
+\brief –º–µ—Ç–æ–¥ –¥–ª—è –æ—Ç–æ–±—Ä–∞–∂–µ–Ω–∏—è –º–µ–Ω—é –≤—ã–±–æ—Ä–∞ –¥–µ–π—Å—Ç–≤–∏—è –¥–ª—è –∏–∑–º–µ–Ω–µ–Ω–∏—è –∏–ª–∏ —É–¥–∞–ª–µ–Ω–∏—è –¥–µ–ª–∞
+\param[in] numCase –Ω–æ–º–µ—Ä –¥–µ–ª–∞
+\param[out] –Ω–æ–º–µ—Ä –ø—É–Ω–∫—Ç–∞ –º–µ–Ω—é
+*/
+int InputOutput::ChangeCaseMenu(int numCase)
 {
 	if (numCase < 0) numCase = 0;
 	int num = 1;
@@ -449,83 +501,174 @@ int InputOutput::ChangeCaseMenu(int nAction, int numCase)
 		case 1:
 			system("cls");
 			_list.GetCase(numCase)->PrintCase(_list.GetNumberOfSpaces(numCase));
-			std::cout << "\n\x1b[36m»ÁÏÂÌËÚ¸ Ì‡Á‚‡ÌËÂ\x1b[0m\n";
-			std::cout << "»ÁÏÂÌËÚ¸ ‰‡ÚÛ\n";
-			std::cout << "”‰‡ÎËÚ¸ ‰ÂÎÓ\n";
-			std::cout << "Õ‡Á‡‰\n";
+			std::cout << "\n\x1b[36m–ò–∑–º–µ–Ω–∏—Ç—å –Ω–∞–∑–≤–∞–Ω–∏–µ\x1b[0m\n";
+			std::cout << "–ò–∑–º–µ–Ω–∏—Ç—å –¥–∞—Ç—É\n";
+			std::cout << "–£–¥–∞–ª–∏—Ç—å –¥–µ–ª–æ\n";
+			std::cout << "–ü–æ—Å—Ç–∞–≤–∏—Ç—å –æ—Ç–º–µ—Ç–∫—É\n";
+			std::cout << "–ù–∞–∑–∞–¥\n";
 			break;
 		case 2:
 			system("cls");
 			_list.GetCase(numCase)->PrintCase(_list.GetNumberOfSpaces(numCase));
-			std::cout << "\n»ÁÏÂÌËÚ¸ Ì‡Á‚‡ÌËÂ\n";
-			std::cout << "\x1b[36m»ÁÏÂÌËÚ¸ ‰‡ÚÛ\x1b[0m\n";
-			std::cout << "”‰‡ÎËÚ¸ ‰ÂÎÓ\n";
-			std::cout << "Õ‡Á‡‰\n";
+			std::cout << "\n–ò–∑–º–µ–Ω–∏—Ç—å –Ω–∞–∑–≤–∞–Ω–∏–µ\n";
+			std::cout << "\x1b[36m–ò–∑–º–µ–Ω–∏—Ç—å –¥–∞—Ç—É\x1b[0m\n";
+			std::cout << "–£–¥–∞–ª–∏—Ç—å –¥–µ–ª–æ\n";
+			std::cout << "–ü–æ—Å—Ç–∞–≤–∏—Ç—å –æ—Ç–º–µ—Ç–∫—É\n";
+			std::cout << "–ù–∞–∑–∞–¥\n";
 			break;
 		case 3:
 			system("cls");
 			_list.GetCase(numCase)->PrintCase(_list.GetNumberOfSpaces(numCase));
-			std::cout << "\n»ÁÏÂÌËÚ¸ Ì‡Á‚‡ÌËÂ\n";
-			std::cout << "»ÁÏÂÌËÚ¸ ‰‡ÚÛ\n";
-			std::cout << "\x1b[36m”‰‡ÎËÚ¸ ‰ÂÎÓ\x1b[0m\n";
-			std::cout << "Õ‡Á‡‰\n";
+			std::cout << "\n–ò–∑–º–µ–Ω–∏—Ç—å –Ω–∞–∑–≤–∞–Ω–∏–µ\n";
+			std::cout << "–ò–∑–º–µ–Ω–∏—Ç—å –¥–∞—Ç—É\n";
+			std::cout << "\x1b[36m–£–¥–∞–ª–∏—Ç—å –¥–µ–ª–æ\x1b[0m\n";
+			std::cout << "–ü–æ—Å—Ç–∞–≤–∏—Ç—å –æ—Ç–º–µ—Ç–∫—É\n";
+			std::cout << "–ù–∞–∑–∞–¥\n";
 			break;
 		case 4:
 			system("cls");
 			_list.GetCase(numCase)->PrintCase(_list.GetNumberOfSpaces(numCase));
-			std::cout << "\n»ÁÏÂÌËÚ¸ Ì‡Á‚‡ÌËÂ\n";
-			std::cout << "»ÁÏÂÌËÚ¸ ‰‡ÚÛ\n";
-			std::cout << "”‰‡ÎËÚ¸ ‰ÂÎÓ\n";
-			std::cout << "\x1b[36mÕ‡Á‡‰\x1b[0m\n";
+			std::cout << "\n–ò–∑–º–µ–Ω–∏—Ç—å –Ω–∞–∑–≤–∞–Ω–∏–µ\n";
+			std::cout << "–ò–∑–º–µ–Ω–∏—Ç—å –¥–∞—Ç—É\n";
+			std::cout << "–£–¥–∞–ª–∏—Ç—å –¥–µ–ª–æ\n";
+			std::cout << "\x1b[36m–ü–æ—Å—Ç–∞–≤–∏—Ç—å –æ—Ç–º–µ—Ç–∫—É\x1b[0m\n";
+			std::cout << "–ù–∞–∑–∞–¥\n";
+			break;
+		case 5:
+			system("cls");
+			_list.GetCase(numCase)->PrintCase(_list.GetNumberOfSpaces(numCase));
+			std::cout << "\n–ò–∑–º–µ–Ω–∏—Ç—å –Ω–∞–∑–≤–∞–Ω–∏–µ\n";
+			std::cout << "–ò–∑–º–µ–Ω–∏—Ç—å –¥–∞—Ç—É\n";
+			std::cout << "–£–¥–∞–ª–∏—Ç—å –¥–µ–ª–æ\n";
+			std::cout << "–ü–æ—Å—Ç–∞–≤–∏—Ç—å –æ—Ç–º–µ—Ç–∫—É\n";
+			std::cout << "\x1b[36m–ù–∞–∑–∞–¥\x1b[0m\n";
+			break;
 		default:
 			break;
 		}
-	} while (input_menu(1, 4, num) != '\r');
-	std::string answer;
-	std::string date;
-	switch (num) {
-	case 1:
-		std::cout << "\x1b[33m¬‚Â‰ËÚÂ ÌÓ‚ÓÂ Ì‡Á‚‡ÌËÂ ‰ÂÎ‡: \x1b[0m";
-		answer = "";
-		std::getline(std::cin, answer);
-		break;
-	case 2:
-		do {
-			std::cout << "\x1b[33m¬‚Â‰ËÚÂ ‰‡ÚÛ ‚ ÙÓÏ‡ÚÂ ƒƒ.ÃÃ.√√√√ -> \x1b[0m";
-			std::getline(std::cin, date);
-		} while (CheckDate(date) == false);
-
-		break;
-	case 3:
-		if (!_list.Size())
-		{
-			system("cls");
-			std::cout << "CÔËÒÓÍ ‰ÂÎ ÔÛÒÚ. ”‰‡ÎˇÚ¸ ÌÂ˜Â„Ó.\n";
-			system("pause");
-		}
-		else {
-			std::cout << "\x1b[33m¬˚ Û‚ÂÂÌ˚, ˜ÚÓ ıÓÚËÚÂ Û‰‡ÎËÚ¸ ‰ÂÎÓ (‰/Ì): \x1b[0m";
-			std::cin >> answer;
-			if (answer[0] == 'y' || answer[0] == '‰')
-			{
-				if (_list.DeleteCase(numCase))
-					std::cout << "ƒÂÎÓ Û‰‡ÎÂÌÓ ËÁ ÒÔËÒÍ‡.\n";
-				else
-					std::cout << "ƒÂÎÓ Õ≈ Û‰‡ÎÂÌÓ ËÁ ÒÔËÒÍ‡.\n";
-			}
-		}
-		break;
-	case 4:
-		return 1;
-	}
-	if (num == 1)
-	{
-		_list.ChangeTitle(answer, numCase);
-	}
-	else if (num == 2)
-	{
-		_list.ChangeDate(date, numCase);
-	}
-	return 0;
+	} while (input_menu(1, 5, num) != '\r');
+	return num;
 }
 
+/*!
+\brief –º–µ—Ç–æ–¥ –¥–ª—è –≤—ã–±–æ—Ä–∞ –¥–µ–π—Å—Ç–≤–∏—è —Å –¥–µ–ª–æ–º
+\param[in] numCase –∏–Ω–¥–µ–∫—Å –¥–µ–ª–∞ –≤ —Å–ø–∏—Å–∫–µ
+\param[in] num –Ω–æ–º–µ—Ä –¥–µ–π—Å—Ç–≤–∏—è –∏–∑ –º–µ–Ω—é
+*/
+void InputOutput::ChangeCase(int numCase, int num)
+{
+	
+	
+	switch (num) {
+	case 1:
+		this->ChangeTitle(numCase);
+		break;
+	case 2:
+		this->ChangeDate(numCase);
+		break;
+	case 3:
+		this->DeleteCase(numCase);
+		break;
+	case 4:
+		this->MarkCase(numCase);
+		break;
+	case 5:
+		return;
+	}
+
+	return;
+}
+
+/*!
+–º–µ—Ç–æ–¥ –¥–ª—è –∏–∑–º–µ–Ω–µ–Ω–∏—è –Ω–∞–∑–≤–∞–Ω–∏—è –¥–µ–ª–∞
+\param[in] numCase –Ω–æ–º–µ—Ä –¥–µ–ª–∞
+*/
+void InputOutput::ChangeTitle(int numCase)
+{
+	std::string answer;
+	std::cout << "\x1b[33m–í–≤–µ–¥–∏—Ç–µ –Ω–æ–≤–æ–µ –Ω–∞–∑–≤–∞–Ω–∏–µ –¥–µ–ª–∞: \x1b[0m";
+	answer = "";
+	std::getline(std::cin, answer);
+	_list.ChangeTitle(answer, numCase);
+}
+
+/*!
+–º–µ—Ç–æ–¥ –¥–ª—è –∏–∑–º–µ–Ω–µ–Ω–∏—è –¥–∞—Ç—ã –¥–µ–ª–∞
+\param[in] numCase –Ω–æ–º–µ—Ä –¥–µ–ª–∞
+*/
+void InputOutput::ChangeDate(int numCase)
+{
+	std::string date;
+	do {
+		std::cout << "\x1b[33m–í–≤–µ–¥–∏—Ç–µ –¥–∞—Ç—É –≤ —Ñ–æ—Ä–º–∞—Ç–µ –î–î.–ú–ú.–ì–ì–ì–ì -> \x1b[0m";
+		std::getline(std::cin, date);
+	} while (CheckDate(date) == false);
+	_list.ChangeDate(date, numCase);
+}
+
+/*!
+–º–µ—Ç–æ–¥ –¥–ª—è —É–¥–∞–ª–µ–Ω–∏—è –¥–µ–ª–∞ –∏–∑ —Å–ø–∏—Å–∫–∞
+\param[in] numCase –Ω–æ–º–µ—Ä –¥–µ–ª–∞
+*/
+void InputOutput::DeleteCase(int numCase)
+{
+	std::string answer;
+	if (!_list.Size())
+	{
+		system("cls");
+		std::cout << "C–ø–∏—Å–æ–∫ –¥–µ–ª –ø—É—Å—Ç. –£–¥–∞–ª—è—Ç—å –Ω–µ—á–µ–≥–æ.\n";
+		system("pause");
+	}
+	else {
+		std::cout << "\x1b[33m–í—ã —É–≤–µ—Ä–µ–Ω—ã, —á—Ç–æ —Ö–æ—Ç–∏—Ç–µ —É–¥–∞–ª–∏—Ç—å –¥–µ–ª–æ (–¥/–Ω): \x1b[0m";
+		std::cin >> answer;
+		if (answer[0] == 'y' || answer[0] == '–¥')
+		{
+			if (_list.DeleteCase(numCase))
+				std::cout << "–î–µ–ª–æ —É–¥–∞–ª–µ–Ω–æ –∏–∑ —Å–ø–∏—Å–∫–∞.\n";
+			else
+				std::cout << "–î–µ–ª–æ –ù–ï —É–¥–∞–ª–µ–Ω–æ –∏–∑ —Å–ø–∏—Å–∫–∞.\n";
+		}
+	}
+}
+
+/*!
+–º–µ—Ç–æ–¥ –¥–ª—è –æ—Ç–º–µ—Ç–∫–∏ –¥–µ–ª–∞ –∫–∞–∫ –≤—ã–ø–æ–ª–Ω–µ–Ω–Ω–æ–µ –∏–ª–∏ –Ω–µ—Ç
+\param[in] numCase –Ω–æ–º–µ—Ä –¥–µ–ª–∞
+*/
+void InputOutput::MarkCase(int numCase)
+{
+	int num = 3;
+	do {
+		switch (num)
+		{
+		case 1:
+			system("cls");
+			std::cout << "–í—ã–±–µ—Ä–∏—Ç–µ –æ—Ç–º–µ—Ç–∫—É:\n";
+			std::cout << "\x1b[36m–í—ã–ø–æ–ª–Ω–µ–Ω–æ\x1b[0m\n";
+			std::cout << "–ù–µ–≤—ã–ø–æ–ª–Ω–µ–Ω–æ\n";
+			std::cout << "–ù–∞–∑–∞–¥\n";
+			break;
+		case 2:
+			system("cls");
+			std::cout << "–í—ã–±–µ—Ä–∏—Ç–µ –æ—Ç–º–µ—Ç–∫—É:\n";
+			std::cout << "–í—ã–ø–æ–ª–Ω–µ–Ω–æ\n";
+			std::cout << "\x1b[36m–ù–µ–≤—ã–ø–æ–ª–Ω–µ–Ω–æ\x1b[0m\n";
+			std::cout << "–ù–∞–∑–∞–¥\n";
+			break;
+		case 3:
+			system("cls");
+			std::cout << "–í—ã–±–µ—Ä–∏—Ç–µ –æ—Ç–º–µ—Ç–∫—É:\n";
+			std::cout << "–í—ã–ø–æ–ª–Ω–µ–Ω–æ\n";
+			std::cout << "–ù–µ–≤—ã–ø–æ–ª–Ω–µ–Ω–æ\n";
+			std::cout << "\x1b[36m–ù–∞–∑–∞–¥\x1b[0m\n";
+			break;
+		}
+	} while (input_menu(1, 3, num) != '\r');
+	if (num == 1)
+		_list.MarkIsDone(numCase);
+	else if (num == 2)
+		_list.MarkIsNotDone(numCase);
+	else
+		return;
+}

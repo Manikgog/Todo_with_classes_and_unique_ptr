@@ -1,8 +1,13 @@
-#include <memory>
+﻿#include <memory>
 #include <fstream>
 #include "CaseList.h"
 #include "Case.h"
 
+/*!
+\brief метод для определения самого длинного названия дела
+Служит для выравнивания списка дел при выводе на экран
+\param[out] длину самого длинного названия дела
+*/
 size_t CaseList::MaxLength()
 {
 	size_t maxLength = 0;
@@ -14,6 +19,10 @@ size_t CaseList::MaxLength()
 	return maxLength;
 }
 
+/*!
+\brief конструктор класса CaseList
+Выполняет чтения списка дел из файла 
+*/
 CaseList::CaseList() 
 {
 	
@@ -21,13 +30,13 @@ CaseList::CaseList()
 
 	fin.open(this->_filename, std::ios_base::in | std::ios_base::binary);
 	//< writing cases from a file to the listCases array
-	//< ������ ��� �� ����� � ������ listCases
+	//< запись дел из файла в массив listCases
 	if (!fin.is_open()) {
-		std::cout << "������ �������� �����.\n";
+		std::cout << "Ошибка открытия файла.\n";
 		return;
 	}
 	else {
-		//std::cout << "���� ������.\n";
+		//std::cout << "Файл открыт.\n";
 		struct C4se
 		{
 			char title[_sizeTitle]{};
@@ -45,13 +54,17 @@ CaseList::CaseList()
 	return;
 }
 
+/*!
+\brief деструктор класса CaseList
+Выполняет запись списка дел в файл
+*/
 CaseList::~CaseList()
 {
 	std::ofstream fout;
 	fout.open(this->_filename, std::ios_base::out | std::ios_base::binary);
 
 	if (!fout.is_open()) {
-		std::cout << "���������� ������� ����.\n";
+		std::cout << "Невозможно открыть файл.\n";
 		return;
 	}
 
@@ -81,11 +94,20 @@ CaseList::~CaseList()
 	return;
 }
 
+/*!
+\brief метод для добавления дела в конец списка
+param[in] case_ ссылка на объект класса Case
+*/
 void CaseList::AddCase(const Case& case_)
 {
 	this->_caseList.push_back(std::make_unique<Case>(case_));
 }
 
+/*!
+\brief метод для удаления дела по индексу
+param[in] index индекс дела в векторе дел
+param[out] результат удаления
+*/
 bool CaseList::DeleteCase(size_t index)
 {
 	if (index < 0 || index >= this->_caseList.size())
@@ -94,12 +116,17 @@ bool CaseList::DeleteCase(size_t index)
 	return true;
 }
 
+/*!
+\brief метод возвращающий количество дел в списке
+*/
 size_t CaseList::Size() const
 {
 	return this->_caseList.size();
 }
 
-
+/*!
+\brief метод для сортировки дел по дате
+*/
 void CaseList::SortCaseListByDate()
 {
 	for (size_t i = 0; i < this->Size() - 1; i++)
@@ -126,10 +153,10 @@ void CaseList::SortCaseListByDate()
 }
 
 /*!
-����� ���������� ���������� �������� ����� �������� ����(������) �� ������ ���� ��� ������������ �� ������.
-���������� �������� ���������� ���� ��������� ����� ������ �������� �������� ���� � ����, ������� ��������� �� ������.
-\param[in] index ������ ����(������) � ������� ����� _caseList
-\param[out] size_t ���������� �������� ����� ����������� �� ����� �������� ����.
+метод возвращает количество пробелов после названия дела(задачи) до начала даты для выравнивания по ширине.
+Количество пробелов получается путём вычитания длины самого длинного названия дела и дела, которое выводится на печать.
+\param[in] index индекс дела(задачи) в векторе задач _caseList
+\param[out] size_t количество пробелов после выведенного на экран названия дела.
 */
 size_t CaseList::GetNumberOfSpaces(size_t index)
 {
@@ -190,6 +217,11 @@ void CaseList::MarkIsNotDone(size_t index)
 	}
 }
 
+/*!
+\breif метод возвращает указатель на объект класса Case, который находится по переданному индексу в векторе _caseList
+param[in] index индекс дела в векторе _caseList
+param[out] Case* указатель на объект класса Case 
+*/
 Case* CaseList::GetCase(size_t index) const
 {
 	return _caseList.at(index).get();

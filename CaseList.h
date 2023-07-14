@@ -1,4 +1,4 @@
-#ifndef _CASELIST_H_
+п»ї#ifndef _CASELIST_H_
 #define _CASELIST_H_
 
 #include "Case.h"
@@ -6,11 +6,13 @@
 #include <vector>
 #include <memory>
 
-
+/*!
+\brief РєР»Р°СЃСЃ CaseList РЎРїРёСЃРѕРє РґРµР»
+*/
 class CaseList
 {
 private:
-	std::vector<std::unique_ptr<Case>> _caseList;				// вектор с указателями на экземпляры класса Case
+	std::vector<std::unique_ptr<Case>> _caseList;				// РІРµРєС‚РѕСЂ СЃ СѓРјРЅС‹РјРё СѓРєР°Р·Р°С‚РµР»СЏРјРё РЅР° СЌРєР·РµРјРїР»СЏСЂС‹ РєР»Р°СЃСЃР° Case
 	const std::string _filename = "case.bin";
 	static const int _sizeTitle = 56;
 	size_t MaxLength();

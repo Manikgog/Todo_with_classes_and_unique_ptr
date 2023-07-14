@@ -1,5 +1,5 @@
-/*!
-\brief ����� Case (������, ����), ������� �������� ���� �������� ���� � ����
+﻿/*!
+\brief Класс Case (задача, дело), который содержит поля название дела и дату
 */
 #ifndef _CASE_H_
 #define _CASE_H_
@@ -8,13 +8,15 @@
 #include "Date.h"
 
 class Date;
-
+/*!
+\brief класс Case Дело
+*/
 class Case
 {
 private:
-	std::string _title;
-	Date _date;
-	bool _isDone;
+	std::string _title;		//< _title C++ строка, название дела
+	Date _date;				//< _date объект класса Date, дата дела
+	bool _isDone;			//< _isDone переменная типа bool, отметка о выполнении: true - дело выполнено, false - невыполнено 
 public:
 	Case();
 	Case(std::string title, std::string date, bool markIsDone);

@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <locale.h>
 #include <windows.h>
 #include <cstdlib>

@@ -1,0 +1,43 @@
+\doxysection{Input\+Output.\+h}
+\hypertarget{_input_output_8h_source}{}\label{_input_output_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ \_INPUTOUTPUT\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ \_INPUTOUTPUT\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <conio.h>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}Case.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}Date.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}CaseList.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_input_output}{InputOutput}}}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{class_case_list}{CaseList}}\ \_list;}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ PrintOverdueCaseList();}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw\_menu(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ numAction);}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{char}\ input\_menu(\textcolor{keywordtype}{int}\ low,\ \textcolor{keywordtype}{int}\ hi,\ \textcolor{keywordtype}{int}\&\ numAcion);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ AddingCase();}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{bool}\ CheckDate(std::string\ date);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsValidDate(\textcolor{keywordtype}{int}\ day,\ \textcolor{keywordtype}{int}\ month,\ \textcolor{keywordtype}{int}\ year);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{bool}\ isLeapYear(\textcolor{keywordtype}{int}\ year);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{bool}\ CheckOverdueCase(\textcolor{keywordtype}{int}\ day,\ \textcolor{keywordtype}{int}\ month,\ \textcolor{keywordtype}{int}\ year,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ currentYear,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ currentMonth,\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{short}\ currentDay)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ ChooseCaseMenu(\textcolor{keywordtype}{int}\ nCase);}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ ChangeCaseMenu(\textcolor{keywordtype}{int}\ numCase);}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ ChangeCase(\textcolor{keywordtype}{int}\ numCase,\ \textcolor{keywordtype}{int}\ num);}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ ChangeTitle(\textcolor{keywordtype}{int}\ numCase);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ ChangeDate(\textcolor{keywordtype}{int}\ numCase);}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ DeleteCase(\textcolor{keywordtype}{int}\ numCase);}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ MarkCase(\textcolor{keywordtype}{int}\ numCase);}
+\DoxyCodeLine{00040\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{class_input_output}{InputOutput}}();}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_output_a71535889c79bc4d625c592221c3b021c}{MainMenu}}();}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !}}
+\DoxyCodeLine{00048\ }
+
+\end{DoxyCode}
